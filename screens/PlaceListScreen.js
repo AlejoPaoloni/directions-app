@@ -1,9 +1,13 @@
+import * as addressAction from '../store/places.actions'
+
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { FlatList } from 'react-native'
 import PlaceItem from '../components/PlaceItem'
-import React from 'react'
-import { useSelector } from 'react-redux'
 
 const PlaceListScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
     const places = useSelector(state => state.places.places)
 
     const renderItem = (data) => (
@@ -17,6 +21,10 @@ const PlaceListScreen = ({ navigation }) => {
             )}
         />
     )
+
+    useEffect(() => {
+        dispatch(addressAction.loadPlaces())
+    }, [])
 
     return (
         <FlatList

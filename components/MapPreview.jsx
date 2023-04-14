@@ -3,17 +3,17 @@ import { Image, StyleSheet, View } from "react-native";
 import { MAP } from "../constants";
 import React from "react";
 
-const MapPreview = (props) => {
-    const mapPreviewUrl = props.location
-        ? `https://maps.googleapis.com/maps/api/staticmap?center=${props.location.lat},${props.location.lng}&zoom=13&size=600x300&maptype=roadmap
-    &markers=color:blue%7Clabel:S%7C${props.location.lat},${props.location.lng}&key=${MAP.API_KEY}`
+const MapPreview = ({ location, style, children }) => {
+    const mapPreviewUrl = location
+        ? `https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.lng}&zoom=13&size=600x300&maptype=roadmap
+    &markers=color:blue%7Clabel:S%7C${location.lat},${location.lng}&key=${MAP.API_KEY}`
         : '';
 
     return (
-        <View style={{ ...styles.mapPreview, ...props.style }}>
-            {props.location
+        <View style={{ ...styles.mapPreview, ...style }}>
+            {location
                 ? <Image style={styles.mapImage} source={{ uri: mapPreviewUrl }} />
-                : (props.children)}
+                : (children)}
         </View>
     );
 };

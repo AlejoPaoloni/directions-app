@@ -14,12 +14,13 @@ const PlaceDetailScreen = ({ route }) => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
+            <Text style={styles.title}>{place.title}</Text>
             <Image source={{ uri: place.image }} style={styles.image} />
             <View style={styles.location}>
                 <View style={styles.addressContainer}>
                     <Text style={styles.address}>{place.address}</Text>
                 </View>
-                <MapPreview style={styles.map} location={ place.coords }>
+                <MapPreview style={styles.map} location={place.coords}>
                     <Text>Ubicación no disponible</Text>
                 </MapPreview>
             </View>
@@ -30,6 +31,13 @@ const PlaceDetailScreen = ({ route }) => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center'
+    },
+
+    title: {
+        fontSize: 24,
+        marginTop: 10,
+        padding: 10,
+        textDecorationLine: 'underline'
     },
 
     image: {
