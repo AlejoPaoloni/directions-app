@@ -33,6 +33,11 @@
     },
     "web": {
       "favicon": "./assets/mapeando_logo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cb044df9-6d37-4059-8ec9-c1a7a0b04069"
+      }
     }
   }
 }
