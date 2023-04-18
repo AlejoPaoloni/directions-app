@@ -1,7 +1,6 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 
 import { COLORS } from '../constants';
-import MapPreview from '../components/MapPreview';
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -13,18 +12,15 @@ const PlaceDetailScreen = ({ route }) => {
     console.log(place)
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.container}>
             <Text style={styles.title}>{place.title}</Text>
             <Image source={{ uri: place.image }} style={styles.image} />
             <View style={styles.location}>
                 <View style={styles.addressContainer}>
                     <Text style={styles.address}>{place.address}</Text>
                 </View>
-                <MapPreview style={styles.map} location={place.coords}>
-                    <Text>Ubicación no disponible</Text>
-                </MapPreview>
             </View>
-        </ScrollView>
+        </View>
     )
 }
 
@@ -66,10 +62,6 @@ const styles = StyleSheet.create({
     address: {
         color: COLORS.MAROON,
         textAlign: 'center'
-    },
-
-    map: {
-        height: 300
     }
 })
 
